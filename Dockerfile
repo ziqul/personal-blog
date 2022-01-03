@@ -8,4 +8,6 @@ FROM ghost:4.32.0
 #
 #WORKDIR /
 
+COPY ./pre-run.sh ./
+
 CMD sh -c "node current/index.js"
