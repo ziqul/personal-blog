@@ -1,6 +1,9 @@
 FROM ghost:4.32.0
 
-ENV ENV="/root/.profile"
+# Entrypoint File Name
+ARG EFN=/usr/local/bin/docker-entrypoint.sh
 
-RUN echo "\nexport server__port=\$PORT" >> /root/.profile
-RUN echo "\necho \"[DEBUG] server__port: \$server__port\"" >> /root/.profile
+RUN sed '2 aexport server__port=\$PORT' $EFN > $EFN.2
+RUN sed '2 { P ; x }' $EFN.2 > $EFN
+RUN rm -rf $EFN.2
+RUN chmod +x $EFN
