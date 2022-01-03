@@ -1,3 +1,5 @@
 FROM ghost:4.32.0
 
-RUN echo "export server__port=\$PORT" >> /etc/profile
+ENV ENV="/root/.profile"
+
+RUN echo "\nexport server__port=\$PORT" >> /root/.profile
