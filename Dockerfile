@@ -1,7 +1,5 @@
 FROM ghost:4.32.0
 
-RUN apt-get update -yq
-RUN apt-get upgrade -yq
-RUN apt-get install -yq curl
+RUN echo "export server__port=\$PORT" >> /etc/profile
 
 COPY ./pre-run.sh ./
